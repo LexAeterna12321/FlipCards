@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    color: #FFD219;
+    font-family: "verdana", sans-serif;
+}
+
+main {
+    position: relative;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 20px;
+    background-color: #14CCBB;
+    overflow: hidden;
+}
+
+main::before {
+    content: "";
+    left: 0;
+    bottom: -20%;
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    transform-origin: bottom left;
+    transform: skewY(-4deg);
+    background-color: #FF00E5;
+    /* z-index: -1; */
+}
+
+.card {
+    justify-self: center;
+    position: relative;
+    min-height: 300px;
+    width: 400px;
+    text-align: center;
+    transform: perspective(300px);
+    transform-style: preserve-3d;
+    margin: 30px 10px;
+    transition: 1.5s;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: rotateY(-180deg)
+}
+
+.card--front,
+.card--back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    z-index: 3;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.card--front img {
+    display: block;
+    width: 100%;
+}
+
+.card--back {
+    background-color: #FFD219;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card--back h1 {
+    position: relative;
+    padding: 5%;
+    justify-self: flex-start;
+    background-color: #FF00E5;
+    flex-basis: 50%;
+    color: inherit;
+    z-index: 2;
+    text-shadow:
+        15px 10px rgba(20, 204, 187, 0.8),
+        -15px -10px rgba(20, 204, 187, 0.8);
+}
+
+.card--back h1::after {
+    content: "";
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: top left;
+    transform: skewY(4deg);
+    background-color: #FF00E5;
+    z-index: -1;
+}
+
+button {
+    justify-self: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 1.6em;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    box-shadow: 0 0 0 10px #FFD219, 0 0 50px 6px rgba(0, 0, 0, 0.8);
+    z-index: 3;
+    cursor: pointer;
+}
